@@ -9,7 +9,6 @@ itsdangerous==1.1.0
 Jinja2==2.11.2
 joblib==0.16.0
 MarkupSafe==1.1.1
-numpy @ file:///C:/ci/numpy_and_numpy_base_1596215850360/work
 olefile==0.46
 packaging==20.4
 Pillow @ file:///C:/ci/pillow_1594298230227/work
