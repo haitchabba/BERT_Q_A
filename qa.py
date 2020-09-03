@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from transformers import BertForQuestionAnswering
 from transformers import BertTokenizer
+import torch
 
 
 app = Flask(__name__)
