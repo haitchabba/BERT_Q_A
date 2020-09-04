@@ -1,18 +1,17 @@
 from flask import Flask, render_template, request
-from transformers import BertForQuestionAnswering
-from transformers import BertTokenizer
+from transformers import DistilBertTokenizer, DistilBertForQuestionAnswering
 import torch
 
 
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
-bert_model = BertForQuestionAnswering.from_pretrained('bert-large-cased-whole-word-masking-finetuned-squad')
-bert_tokenizer = BertTokenizer.from_pretrained('bert-large-cased-whole-word-masking-finetuned-squad')
+bert_model = DistilBertTokenizer.from_pretrained('distilbert-base-uncased',return_token_type_ids = True)
+bert_tokenizer = DistilBertForQuestionAnswering.from_pretrained('distilbert-base-uncased-distilled-squad')
 
 
 def answer_question(question, context):
 
-    input_ids = bert_tokenizer.encode(question, context)
+    input_ids = torch.tensor(bert_tokenizer.encode(question, context))
 
     print('Query has {:,} tokens.\n'.format(len(input_ids)))
 
